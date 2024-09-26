@@ -1,1 +1,1 @@
-Progetti svolti durante il Master di Profession AI in Data Science
+Progetti svolti durante il Master in Data Science di Profession AI
