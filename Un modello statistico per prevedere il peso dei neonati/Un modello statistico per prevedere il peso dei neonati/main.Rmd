@@ -1,0 +1,804 @@
+---
+title: "Un modello statistico per prevedere il peso dei neonati"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+warnings: no
+---
+                
+
+```{r, warning=FALSE, message=FALSE, note=FALSE}
+options(warn = -1)
+#install.packages("ggplot2")
+#install.packages("ineq")
+#install.packages("car")
+#install.packages("MASS")
+#install.packages("lmtest")
+#install.packages("dplyr")
+#tinytex::install_tinytex()
+library(ggplot2)
+library(ineq)
+library(car)
+library("MASS")
+library(lmtest)
+library(dplyr)
+
+```
+
+1.  Importa il dataset "neonati.csv" e controlla che sia stato letto correttamente dal software
+
+```{r}
+df = read.csv("neonati.csv")
+```
+
+Controllo se c'è qualche valore NaN
+
+```{r}
+ any(is.na(df))
+```
+
+Il DataFrame è stato importato correttamente.
+
+
+2.  Descrivi il dataset, la sua composizione, il tipo di variabili e l'obbiettivo dello studio
+
+Tipologia variabili:
+
+1)  Anni.madre: quantitativa discreta (anni della madre)
+2)  N.gravidanze: quantitativa discreta (numero di gravidanze precedenti)
+3)  Fumatrici: qualitativa Categoriale (SI, NO)
+4)  Gestazione: quantitativa discreta (numero di settimane di gestazione)
+5)  Peso: quantitativa continua (in grammi)
+6)  Lunghezza: quantitativa continua (in mm)
+7)  Cranio: quantitativa continua (diametro del cranio, in mm)
+8)  Tipo.parto: qualitativa Categoriale (Naturale o Cesareo)
+9)  Ospedale: qualitativa Categoriale (1, 2, 3)
+10) Sesso: qualitativa Categoriale (M o F)
+
+
+Summary variabili quantitative:
+
+```{r}
+df_selected <- select(df, -Fumatrici, -Tipo.parto, -Ospedale)
+summary(df_selected)
+```
+La variabile Anni.madre ha dei valori anomali (esempio 0,1..). Tutti i valori inferioria 12 vengono quindi sostituiti con la media degli anni delle  madri.
+
+
+```{r}
+# Calcola la media escludendo i valori inferiori a 12
+media_validi <- mean(df$Anni.madre[df$Anni.madre >= 12], na.rm = TRUE)
+
+# Sostituisci i valori inferiori a 12 con la media calcolata
+df$Anni.madre[df$Anni.madre < 12] <- media_validi
+
+attach(df)
+```
+
+
+
+Frequenza delle variabili qualitative;
+
+```{r}
+table(Fumatrici)
+```
+
+```{r}
+table(Tipo.parto)
+```
+
+```{r}
+
+table(Ospedale)
+```
+
+
+
+Obiettivo: Si vuole scoprire se è possibile prevedere il peso del neonato alla nascita, date tutte le altre variabili.
+
+Variabile di risposta: Peso
+
+Variabili esplicative: Anni.madre, N.gravidanze, Fumatrici, Gestazione, Lunghezza, Cranio, Tipo.parto, Ospedale, Sesso, di cui Lunghezza, Cranio, Sesso sono variabili di controllo.
+
+3.  Indaga le variabili effettuando una breve analisi descrittiva
+
+3.1 Analisi dei regressori:
+
+```{r}
+par(mfrow = c(2,3))
+boxplot(Anni.madre, main = "Anni delle madri", col="lightblue")
+boxplot(N.gravidanze, main = "Numero gravidanze", col="lightblue")
+boxplot(Gestazione, ylab = "Anni", main = "Settimane di gestazione", col="lightblue")
+boxplot(Lunghezza, main = "Lunghezza del neonato", col="lightblue")
+boxplot(Cranio, main = "Diametro del cranio", col="lightblue")
+```
+
+```{r}
+
+ggplot(data = df)+
+  geom_bar(
+    aes(x= as.factor(Fumatrici)), 
+    stat = "count", 
+    fill = "lightblue",
+    color = "black")+
+  labs(title = "Fumatrici",
+       x="Variabile fumatrici",
+       y="Frequenze assolute")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  scale_y_continuous(breaks = seq(0,2500,500))
+
+
+ggplot(data = df)+
+  geom_bar(
+    aes(x=Tipo.parto), 
+    stat = "count", 
+    fill = "lightblue",
+    color = "black")+
+  labs(title = "Tipo.parto",
+       x="Variabile Tipo.parto",
+       y="Frequenze assolute")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  scale_y_continuous(breaks = seq(0,2500,500))
+
+ggplot(data = df)+
+  geom_bar(
+    aes(x=Ospedale), 
+    stat = "count", 
+    fill = "lightblue",
+    color = "black")+
+  labs(title = "Ospedale",
+       x="Variabile Ospedale",
+       y="Frequenze assolute")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  scale_y_continuous(breaks = seq(0,2500,500))
+  
+
+  ggplot(data = df)+
+  geom_bar(
+    aes(x=Sesso), 
+    stat = "count", 
+    fill = "lightblue",
+    color = "black")+
+  labs(title = "Sesso",
+       x="Variabile Sesso",
+       y="Frequenze assolute")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  scale_y_continuous(breaks = seq(0,2500,250))
+```
+
+Eccetto le variabili "Fumatrici" e "Tipo.parto" le variabili qualitative presentano una buona omogeneità, ovvero un'equidistribuzione delle classi.
+
+Al contrario la variabile "Tipo.parto" presenta una marcata eterogeneità mentre la variabile "Fumatrici" presenta quasi la massima concentrazione, ovvero tutti i valori concentrati in un'unica classe.
+
+Confrontando i risultati grafici con l'indice di GINI si ottengono le medesime conclusioni:
+
+Fumatrici:
+
+```{r}
+source("Utils.R")
+indice_gini(Fumatrici)
+```
+
+Tipo.parto:
+
+```{r}
+indice_gini(Tipo.parto)
+```
+
+Ospedale:
+
+```{r}
+indice_gini(Ospedale)
+```
+
+Sesso:
+
+```{r}
+indice_gini(Sesso)
+```
+
+Dove l'indice di GINI assume valore pari a 1 quando le classi sono equidistribuite e al contrario un valore pari a zero quando le classi hanno il massimo grado di eterogeneità.
+
+3.2 Analisi della variabile di risposta:
+
+```{r}
+boxplot(Peso, main = "Peso del neonato", col="lightblue")
+```
+
+Dal BoxPlot la variabile di risposta presenta un buon grado di simmetria, con la presenza di outlier, soprattutto nella coda sinistra.
+
+Verifichiamo la vicinanza alla distribuzione normale con gli indici di curtosi e simmetria:
+
+```{r}
+moments::skewness(Peso)
+moments::kurtosis(Peso) -3
+```
+
+l'indice di simmetria è prossimo allo zero, ovvero indica una distribuzione simmetrica rispetto alla media.
+
+l'indice di curtosi è lievemente positivo, ovvero i dati presentano una gobba leggermente più alta rispetto alla distribuzione normale con delle code più basse e strette.
+
+Verifichiamo l'ipotesi che i dati seguano una distribuzione Normale con il Test d'ipotesi di Shapiro-Wilk.
+
+```{r}
+shapiro.test(Peso)
+```
+
+l' ipotesi di normalità viene rifiutata in quanto il p-value è inferiore al livello di significatività alpha=0.05.
+
+```{r}
+plot(density(Peso), main = "Distribuzione del Peso", xlab = "Peso", col = "blue")
+abline(v = mean(Peso), col = "green")
+lines(density(rnorm(100000, mean = mean(Peso), sd = sd(Peso))), col = "brown")
+legend("topright", legend = c("Densità Peso", "Media Peso", "Densità Normale"), 
+       col = c("blue", "green", "brown"), lty = 1:1, cex = 0.8)
+```
+
+4.  Saggia l'ipotesi che la media del peso e della lunghezza di questo campione di neonati siano significativamente uguali a quelle della popolazione.
+
+media peso popolazione: circa 3300 gr.
+media lunghezza popolazione: circa 50 cm.
+
+Essendo che le variabili in questione non seguono una distribuzione normale si opta per usare il test-t che è adatto a questo tipo di situazioni.
+Infatti il test-t, per verificare l'ipotesi tra media del campione e parametro sotto H0 può essere usato nei seguenti casi:
+
+1 - campione piccolo
+2 - varianza popolazione non nota
+3 - incertezza sul modello che segue i dati
+4 - distribuzione non normale
+
+
+Test per la verifica del peso:
+
+```{r}
+t.test(Peso, mu=3300, conf.level = 0.95, alternative = "two.sided")
+```
+
+p-value = 0.1287.
+quindi non si rifiuta l'ipotesi che la media del peso dei neonati è statisticativamente uguale a quella della popolazione (3300 gr).
+
+
+Test per la verifica della lunghezza:
+
+```{r}
+t.test(Lunghezza, mu=500, conf.level = 0.95, alternative = "two.sided")
+```
+p-value < 2.2e-16.
+quindi si rifiuta l'ipotesi che la media della lunghezza dei neonati è statisticativamente uguale a quella della popolazione (500 mm).
+I dati della popolazione sono comunque leggermente variabili quindi è possibile riscontrare incongruenze a causa di questa non univocità.
+
+
+5.  Per le stesse variabili, o per altre per le quali ha senso farlo, verifica differenze significative tra i due sessi
+
+-> Relazione Peso-Sesso:
+
+```{r}
+boxplot(Peso ~ Sesso, col="lightblue")
+title(main = "Variabile Peso in funzione del sesso", cex.main = 1.5)
+```
+
+verifica assunzioni per test-t d'ipotesi tra gruppi indipendenti:
+
+```{r}
+shapiro.test(Peso[Sesso=="M"])
+shapiro.test(Peso[Sesso=="F"])
+```
+
+Entrambe le variabili non sono distribuite normalmente quindi non si può usare il Test-t per confrontare medie di gruppi diversi.
+
+Si utilizza allora un test NON parametrico per esempio il Wilcoxon e Mann-Whitney test.
+
+```{r}
+wilcox.test(Peso[Sesso=="M"], Peso[Sesso=="F"])
+```
+
+viene rigettata l'ipotesi nulla, quindi i due gruppi differiscono significativamente nella media.
+
+Per completezza si riporta il grafico delle due distribuzioni:
+
+```{r}
+plot(density(Peso[Sesso=="M"]), main = "Distribuzione in funzione del sesso", xlab = "Peso", ylim = c(0, 12e-4),  col = "blue")
+abline(v = mean(Peso[Sesso=="M"]), col = "blue")
+lines(density(Peso[Sesso=="F"]), col = "brown")
+abline(v = mean(Peso[Sesso=="F"]), col = "brown")
+legend("topleft", legend = c("Distribuzione Peso Maschi", "Media Peso Maschi", "Distribuzione Peso Femmine", "Media Peso Femmine"), 
+       col = c("blue", "blue", "brown", "brown"), lty = 1:1, cex = 0.8)
+```
+
+-> Relazione Lunghezza-Sesso:
+
+```{r}
+boxplot(Lunghezza ~ Sesso, col="lightblue")
+title(main = "Variabile Lunghezza in funzione del sesso", cex.main = 1.5)
+```
+
+```{r}
+shapiro.test(Lunghezza[Sesso=="M"])
+shapiro.test(Lunghezza[Sesso=="F"])
+```
+
+Anche in questo caso le variabili non sono distribuite normalmente quindi non si può usare il Test-t per confrontare medie di gruppi diversi.
+
+Si userà quindi il test NON parametrico di Wilcoxon e Mann-Whitney per gruppi indipendenti.
+
+```{r}
+wilcox.test(Lunghezza[Sesso=="M"], Lunghezza[Sesso=="F"])
+
+```
+
+anche in questo caso viene rigettata l'ipotesi nulla, quindi i due gruppi differiscono significativamente nella media.
+
+Per completezza si riporta il grafico delle due distribuzioni:
+
+```{r}
+plot(density(Lunghezza[Sesso=="M"]), main = "Distribuzione in funzione del sesso", xlab = "Lunghezza", ylim = c(0, 0.025),  col = "blue")
+abline(v = mean(Lunghezza[Sesso=="M"]), col = "blue")
+lines(density(Lunghezza[Sesso=="F"]), col = "brown")
+abline(v = mean(Lunghezza[Sesso=="F"]), col = "brown")
+legend("topleft", legend = c("Distribuzione Lunghezza Maschi", "Media Lunghezza Maschi", "Distribuzione Lunghezza Femmine", "Media Lunghezza Femmine"), 
+       col = c("blue", "blue", "brown", "brown"), lty = 1:1, cex = 0.8)
+```
+
+6.  Si vocifera che in alcuni ospedali si facciano più parti cesarei, verifichiamo questa ipotesi.
+
+```{r}
+ggplot(data = df)+
+  geom_bar(
+    aes(x=Ospedale, fill = Tipo.parto), 
+    position = "dodge",
+    sta = "count",
+    color = "black")+
+  labs(x="Ospedali",
+       y="Frequenze assolute")+
+  theme_bw()+
+  scale_y_continuous(breaks = seq(0,1500,100))
+```
+
+Si può notare una leggera differenza tra i 3 ospedali con "osp2" in testa seguito da "osp1" e "osp3", si verifica ora che queste differenze siano statisticamente significative.
+
+Il test utilizzato è X^2 che ha una distribuzione chi-quadro con (N-1)\*(M-1) gradi di libertà dove N e M sono rispettivamente righe e colonne della tabella di contingenza cosi creata.
+
+```{r}
+tab_contingenza = table(Tipo.parto, Ospedale)["Ces", ]
+tab_contingenza
+```
+
+ovvero N=1 e M=3.
+
+```{r}
+chisq.test(tab_contingenza)
+```
+
+quindi NON si rifiuta l'ipotesi nulla che le 3 frequenze di parti cesari provengano dalla stessa distribuzione di conseguenza le differenze osservate graficamente non sono statisticamente significative potendo concludere che le voci son false.
+
+PARTE 2 - ANALISI MULTIDIMENSIONALE -
+
+1.  Indaga le relazioni a due a due, soprattutto con la variabile risposta.
+
+```{r}
+panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)
+{
+    par(usr = c(0, 1, 0, 1))
+    r <- abs(cor(x, y))
+    txt <- format(c(r, 0.123456789), digits = digits)[1]
+    txt <- paste0(prefix, txt)
+    if(missing(cex.cor)) cex.cor <- 0.8/strwidth(txt)
+    text(0.5, 0.5, txt, cex = cex.cor * r)
+}
+
+
+mapping_numerico = c("Nat" = 1, "Ces" = 2)
+
+df$Tipo.parto = as.numeric(factor(Tipo.parto, levels = names(mapping_numerico), labels = mapping_numerico))
+
+mapping_numerico2 = c("osp1" = 1, "osp2" = 2, "osp3" = 3)
+
+df$Ospedale = as.numeric(factor(Ospedale, levels = names(mapping_numerico2), labels = mapping_numerico2))
+
+mapping_numerico3 = c("M" = 1, "F" = 2)
+
+df["Sesso"] = as.numeric(factor(Sesso, levels = names(mapping_numerico3), labels = mapping_numerico3))
+
+attach(df)
+```
+
+```{r}
+
+pairs(df, upper.panel = panel.smooth, lower.panel = panel.cor)
+```
+
+Come si può notare dal grafco appena riportato la variabile di risposta Peso sembra essere correlata a 3 variabili in particolare:
+
+-> Lunghezza: con una correlazione pari a 0.80
+-> Cranio: con una correlazione pari a 0.70 
+-> Gestazione: con una correlazione pari a 0.59
+
+tutte e 3 variabili quantitative.
+
+Per le variabili qualitative lo scatterplot non rappresenta un buon strumento di visualizzazione, tanto meno le indicazioni della correlazione lineare circa eventuali associazioni.
+
+Si usa perciò il boxplot condizionato per visualizzare eventuali dipendenze.
+
+```{r}
+par(mfrow = c(1,2))
+boxplot(Peso~Fumatrici, xlab = "Relazione peso-fumatrici", col="lightblue")
+boxplot(Peso~Tipo.parto, xlab = "Relazione peso-tipo parto", col="lightblue")
+```
+
+Dall'analisi grafica non sembrano esserci differenze significative del peso in funzione del tipo di parto ma si possono notare delle leggere fluttuazioni in funzione del fatto che la madre fumi o meno. Verifichiamo quindi con il test d'ipotesidi Wilcoxon e Mann-Whitney.
+
+```{r}
+wilcox.test(Peso[Fumatrici=="0"], Peso[Fumatrici=="1"], mu=0)
+```
+
+Non si rifiuta l'ipotesi nulla anche se siamo sulla zona di confine. L'ipotesi nulla (H0) del test di Wilcoxon-Mann-Whitney è che le due distribuzioni sono stocasticamente uguali, cioè che non ci sono differenze significative tra i gruppi. Quindi si porrà maggiore attenzione alla variabile Fumatrici in seguito.
+
+```{r}
+wilcox.test(Peso[Tipo.parto=="1"], Peso[Tipo.parto=="2"], mu=0)
+```
+
+Come ci si aspettava non si rifiuta l ipotesi nulla quindi la variabile Tipo.parto non influenza la variabile Peso.
+
+Non viene valutata la correlazione Peso-Ospedale perchè non ha senso.
+
+Per quanto riguarda le variabili esplicative invece si nota una leggera correlazione tra:
+
+-> Gestazione e Lunghezza pari a: 0.62 
+-> Gestazione e Cranio pari a: 0.46 
+-> Lunghezza e Cranio pari a: 0.60
+
+2.  Crea un modello di regressione lineare multipla con tutte le variabili e commenta i coefficienti e il risultato ottenuto
+
+
+Vengono ora tolte in modo casuale 10 osservazioni dal dataset che verranno usate alla fine per la fase di testing.
+
+```{r}
+df = read.csv("neonati.csv")
+df = df[-27,]
+df = df[-73,]
+df = df[-516,]
+df = df[-812,]
+df = df[-1111,]
+df = df[-1315,]
+df = df[-1717,]
+df = df[-1899,]
+df = df[-2301,]
+df = df[-2400,]
+attach(df)
+
+modello_1 = lm(Peso ~ ., data=df)
+summary(modello_1)
+```
+
+Commenti:
+
+Le variabili: N.gravidanze, Gestazione, Lunghezza, Cranio, Tipo.parto e Sesso hanno superato il test-t, ovvero hanno mostrato un livello di significatività tale da rigettare l ipotesi nulla che siano uguali a zero, di conseguenza sembrano mostrare una buona significatività nello spiegare la varianza della Risposta. In ogni caso vanno ulteriormente indagate con ulteriori test.
+
+Questi risultati sono in linea con l'indagine fatta nel punto 1 dove le variabili Gestazione, Lunghezza e Cranio hanno mostrato una buona relazione con la risposta mentre era assente per le variabili Fumatrici e Tipo.parto.
+
+Avendo ottenuto risultati contrastanti per la variabile Tipo.parto va ulteriormente indagata.
+
+Siamo inoltre in linea col punto 5 della parte 1 dove si era riscontrata una differenza significativa del peso in funzione della variabile Sesso.
+
+```{r}
+vif(modello_1)
+```
+
+Dalla statistica VIF non si rilevano particolari correlazioni tra i regressori, essendo tutte minori di 5.
+
+Infine per quanto la variabilità spiegata dal modello si riscontra un discreto ma non ottimo risultato, come si può notare dall' R^2 aggiustato.
+
+3.  Cerca il modello "migliore", utilizzando tutti i criteri di selezione che conosci e spiegali.
+
+3.1 manualmente:
+
+Dall'analisi del punto 2 il modello suggerito sarebbe:
+
+```{r}
+modello_2 = lm(Peso ~ . -Anni.madre -Fumatrici -Ospedale, data=df)
+summary(modello_2)
+```
+
+Ovvero il modello 1 meno i regressori con un' influenza non significativa sulla risposta.
+
+Il modello_2 presenta un R^2 aggiustato perossochè uguale a modello_1 con la differenza di usare 3 variabili in meno, il che rappresenta un vantaggio. Verifichiamo con gli appositi indici (dove verrà usato solo l'indice BIC in quanto tende a penalizzare di più modelli sovraparametrati rispetto al AIC e quindi in linea con il pensiero di Occam):
+
+```{r}
+BIC(modello_1, modello_2)
+```
+
+Viene fatta adesso una analisi dell varianza con il test ANOVA per verificare se ci sono differenza significative della varianza spiegata dai modelli.
+
+```{r}
+anova(modello_1, modello_2)
+```
+
+Secondo questo test c'è una varianza spiegata significativamente diversa nei due modelli ma viene ugualmente tenuto il modello_2 in quanto dalle indagini precedenti i regressori eliminati erano poco significativi sulla variabile di risposta, inoltre a causa dell'overfitting è facile avere una varianza spiegata maggiore quando si hanno 3 regressori in più.
+
+Ora si prova a togliere anche la variabile Tipo.parto in quanto non risultava significativa dall' analisi del punto1.
+
+```{r}
+modello_3 = update(modello_2, ~. -Tipo.parto)
+summary(modello_3)
+```
+
+Anche in questo caso il modello ottenuto riesce a mantenere un R^2 aggiustato praticamente uguale con un parametro in meno.
+
+test anova:
+
+```{r}
+anova(modello_2, modello_3)
+```
+
+Anche in questo caso il test anova conferma una perdita di varianza spiegata eliminando una variabile.
+
+BIC:
+
+```{r}
+BIC(modello_2, modello_3)
+```
+
+bic del modello_3 leggermente inferiore del modello_2.
+
+Per ora non si prendono decisioni sulla scelta del modello_2 o modello_3 ma si indaga ulteriolmente.
+
+3.2 selezione del modello tramite la funzione stepAIC:
+
+```{r}
+n = nrow(df)
+step_wiseAIC = MASS::stepAIC(modello_1, direction = "both", k=log(n))
+summary(step_wiseAIC)
+```
+
+```{r}
+BIC(step_wiseAIC, modello_3)
+```
+
+La funzione stepAIC sembra confermare il modello_3 precedentemente scelto.
+
+4.  Si potrebbero considerare interazioni o effetti non lineari?
+
+relazioni quadratiche:
+
+```{r}
+modello_4_1 = update(modello_3, ~. + I(Gestazione^2))
+modello_4_2 = update(modello_3, ~. + I(Lunghezza^2))
+modello_4_3 = update(modello_3, ~. + I(Cranio^2))
+modello_4_4 = update(modello_3, ~. + I(N.gravidanze^2))
+BIC(modello_4_1)
+BIC(modello_4_2)
+BIC(modello_4_3)
+BIC(modello_4_4)
+```
+
+relazioni tra variabili:
+
+```{r}
+modello_5_1 = update(modello_3, ~. + Gestazione*Cranio )
+modello_5_2 = update(modello_3, ~. + Lunghezza*Gestazione )
+modello_5_3 = update(modello_3, ~. + Lunghezza*Cranio )
+BIC(modello_5_1)
+BIC(modello_5_2)
+BIC(modello_5_3)
+```
+
+Il modello_4_2 è quello con il BIC minore, tra i modelli non lineari. In conclusione i modelli per ora in competizione sono il modello_3 e modello_4_2.
+
+5.  Effettua una diagnostica approfondita dei residui del modello e di potenziali valori influenti. Se ne trovi prova a verificare la loro effettiva influenza.
+
+-> modello_3:
+
+```{r}
+par(mfrow=c(2,2))
+plot(modello_3)
+```
+
+dai grafici 1 e 3 i residui sembrano avere una leggera maggiore varianza nella zona centrale che tende poi a chiudersi alle estremità.
+
+dal graifco 2 i residui sembrano seguire una buona approssimazione della normale, eccetto nelle code che tendono leggermente a distaccarsi dalla bisettrice.
+
+dal grafico 4 si nota l il residuo 1551 nella zona di attenzione, ovvero superiore a 0.5.
+
+Verifichiamo la presenza di outliers:
+
+```{r}
+#distanza di cook
+cook<-cooks.distance(modello_3)
+max(cook)
+which.max(cook)
+plot(cook,ylim = c(0,1)) 
+```
+
+Dall'analisi degli outliers con la distanza di cook risulta che l'osservazione 1551 supera la soglia di avvertimento.
+
+```{r}
+df_no_out = df[-1551,]
+
+modello_3_no_out = lm(Peso ~ . -Anni.madre -Fumatrici -Ospedale -Tipo.parto, data=df_no_out)
+```
+
+Viene quindi eliminata dal dataset (anche se tipicamente si dovrebbe calcolare la media ma in questo caso viene fatto così in quanto i dati sono tanti).
+
+Si saggiano le ipotesi di normalità, omoschedasticità e indipendenza rispettivamente:
+
+```{r}
+shapiro.test(residuals(modello_3_no_out))
+bptest(modello_3_no_out)
+dwtest(modello_3_no_out)
+```
+
+Dalla quale: 
+-> residui con una distribuzione non normale 
+-> residui non omoschedastici 
+-> residui indipendenti
+
+Infine:
+
+```{r}
+plot(density(residuals(modello_3_no_out)), main="Densità residui modello_3_no_out")
+```
+
+```{r}
+plot(residuals(modello_3_no_out))
+title(main = "Residui modello_3_no_out", cex.main = 1.5)
+```
+
+Dagli ultimi due grafici invece si possono notare: 
+
+-> residui con una buona approssimazione alla normale 
+-> residui omoschedastici, ovvero senza particolari pattern nella varianza.
+
+Essendo che con campioni di grandi dimensioni, il test di Shapiro-Wilk può diventare statisticamente significativo anche se le deviazioni dalla normalità sono trascurabil (questo è dovuto alla sua sensibilità elevata) si è deciso di tenere comunque in considerazione il modello 3 con esclusa l'osservazione 1551 ovvero il "modello_3_no_out".
+
+-> modello_4_2
+
+```{r}
+par(mfrow=c(2,2))
+plot(modello_4_2)
+```
+
+Le stesse considerazioni dello stesso grafico del modello_3 possono essere fatte per il modello_4_2.
+
+```{r}
+#distanza di cook
+cook<-cooks.distance(modello_4_2)
+max(cook)
+which.max(cook)
+plot(cook,ylim = c(0,1)) 
+```
+
+Nessun particolare valore oltre la distanza di cook.
+
+Si saggiano le ipotesi di normalità, omoschedasticità e indipendenza rispettivamente:
+
+```{r}
+shapiro.test(residuals(modello_4_2))
+bptest(modello_4_2)
+dwtest(modello_4_2)
+```
+
+Dalla quale: 
+
+-> residui con una distribuzione non normale 
+-> residui non omoschedastici 
+-> residui indipendenti
+
+Infine:
+
+```{r}
+plot(density(residuals(modello_4_2)), main="Densità residui modello_4_2")
+```
+
+```{r}
+plot(residuals(modello_4_2))
+title(main="Residui modello_4_2")
+```
+
+Anche in questo caso dagli ultimi due grafici invece si possono notare: 
+
+-> residui con una buona approssimazione alla normale 
+-> residui omoschedastici, ovvero senza particolari pattern nella varianza.
+
+In conclusione si trova:
+
+1)  differenza non significativa nel parametro R^2 tra i due modelli.
+
+```{r}
+summary(modello_3_no_out)$r.squared
+summary(modello_4_2)$r.squared
+```
+
+2)  BIC inferire del modello_4_2.
+
+```{r}
+BIC(modello_3_no_out)
+BIC(modello_4_2)
+```
+
+3)  numero inferiore di regressori del modello_3.
+
+4)  una leggera migliore approssimazione alla normale dei residui del modello_4_2.
+
+<!-- -->
+
+6.  Quanto ti sembra buono il modello per fare previsioni?
+
+uso il mean square error:
+
+```{r}
+df_test = read.csv("neonati.csv")
+
+p31 = predict(modello_3_no_out, df_test[27,])
+p41 = predict(modello_4_2, df_test[27,])
+
+p32 = predict(modello_3_no_out, df_test[73,])
+p42 = predict(modello_4_2, df_test[73,])
+
+p33 = predict(modello_3_no_out, df_test[516,])
+p43 = predict(modello_4_2, df_test[516,])
+
+p34 = predict(modello_3_no_out, df_test[812,])
+p44 = predict(modello_4_2, df_test[812,])
+
+p35 = predict(modello_3_no_out, df_test[1111,])
+p45 = predict(modello_4_2, df_test[1111,])
+
+p36 = predict(modello_3_no_out, df_test[1315,])
+p46 = predict(modello_4_2, df_test[1315,])
+
+p37 = predict(modello_3_no_out, df_test[1717,])
+p47 = predict(modello_4_2, df_test[1717,])
+
+p38 = predict(modello_3_no_out, df_test[1899,])
+p48 = predict(modello_4_2, df_test[1899,])
+
+p39 = predict(modello_3_no_out, df_test[2301,])
+p49 = predict(modello_4_2, df_test[2301,])
+
+p310 = predict(modello_3_no_out, df_test[2400,])
+p410 = predict(modello_4_2, df_test[2400,])
+
+v1 = c(p31, p32, p33, p34, p35, p36, p37, p38, p39, p310)
+v2 = c(p41, p42, p43, p44, p45, p46, p47, p48, p49, p410)
+
+mu = c(df_test[27,]$Peso, df_test[73,]$Peso, df_test[516,]$Peso, df_test[812,]$Peso, df_test[1111,]$Peso, df_test[1315,]$Peso, df_test[1717,]$Peso, df_test[1899,]$Peso,df_test[2301,]$Peso, df_test[2400,]$Peso)
+
+
+mse_3_no_out = MSE(v1,mu)
+mse_4_2 = MSE(v2,mu)
+
+mse_3_no_out
+mse_4_2
+```
+
+In conclusione si può dire che entrambi i modelli siano dei buoni adattamenti per questo Dataset ma viene preso in considerazione il modello_3/modello_3_no_out in quanto a parità di R^2 è quello che ha meno parametri ed è anche quello che sembra predire meglio dati nuovi (mse_3_no_out < mse_4_2).
+
+7.  Fai la tua migliore previsione per il peso di una neonata, considerato che la madre è alla terza gravidanza e partorirà alla 39esima settimana. Niente misure dall'ecografia.
+
+Essendo che non si hanno valori per le variabili di controllo lunghezza e cranio prima di effettuare la predizione le rimuovo dal modello per non ottenere risultati sballati.
+
+```{r}
+modello_6 = update(modello_3_no_out, ~. -Lunghezza -Cranio)
+osservazione = data.frame(N.gravidanze=3,Gestazione=39, Sesso="F")
+
+predict(modello_6, osservazione)
+```
+
+8.  Cerca di creare qualche rappresentazione grafica che aiuti a visualizzare il modello. Se è il caso semplifica quest'ultimo!
+
+```{r}
+ggplot(data = df)+
+  geom_point(aes(x = Gestazione,
+               y = Peso,
+               col = Sesso),position = "jitter")+
+  geom_smooth(aes(x = Gestazione,
+                  y = Peso,
+                  col = Sesso),se=F,method = "lm")+
+  labs(title = "Peso Bambini",
+       x="Giorni Gestazione",
+       y="Peso Neonati")
+  
+```
+
+Il peso dei bambini cresce al crescere delle settimane di gestazione. La maggior parte dei bambini nasce dalla 35° settimana di gestazione. Non ci sono differenze particolari nell'andamento della crescita del peso al crescere delle settimane di gestazione al variare del sesso del bambino (le rette hanno diversa intercetta ma simile pendenza).

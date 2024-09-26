@@ -1,0 +1,1288 @@
+CASCADE: 
+Best Classifier in Cascade: 
+#1: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (40, 46)
+Best_Classfier.theta: -2.171755655351032
+Best_Classfier.sign: -1
+Best_Classfier.weight: 2.1117842138829266
+
+Best Classifier in Cascade: 
+#2: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (34, 31)
+Best_Classfier.theta: 1.5687301274979009
+Best_Classfier.sign: 1
+Best_Classfier.weight: 1.3414768161150161
+
+Best Classifier in Cascade: 
+#3: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (34, 31)
+Best_Classfier.theta: -3.275117686875322
+Best_Classfier.sign: -1
+Best_Classfier.weight: 1.0906381707848893
+
+Best Classifier in Cascade: 
+#4: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (41, 30)
+Best_Classfier.theta: -0.15152404818366172
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.8541204013854218
+
+Best Classifier in Cascade: 
+#5: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 50)
+Best_Classfier.theta: 0.012724476539268038
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.8635209910309419
+
+Best Classifier in Cascade: 
+#6: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (19, 34)
+Best_Classfier.theta: -12.594121744617619
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.8306841591712
+
+Best Classifier in Cascade: 
+#7: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (40, 36)
+Best_Classfier.theta: -0.9981688054360278
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.7489216354394838
+
+Best Classifier in Cascade: 
+#8: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 48)
+Best_Classfier.theta: 0.0010628785833979506
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.7379765944394051
+
+Best Classifier in Cascade: 
+#9: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (55, 31)
+Best_Classfier.theta: -0.4653905967246772
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.7250908640576142
+
+Best Classifier in Cascade: 
+#10: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 11)
+Best_Classfier.theta: 1.4601691860837844e-05
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.6171357590595524
+
+Best Classifier in Cascade: 
+#11: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (55, 42)
+Best_Classfier.theta: 1.585104118112707
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.6589240804000541
+
+Best Classifier in Cascade: 
+#12: 
+Best_Classfier.haar.type: 4
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (3, 2)
+Best_Classfier.haar.shape: (3, 2)
+Best_Classfier.haar.start: (29, 63)
+Best_Classfier.theta: 0.8208457065583505
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5940885240828205
+
+Best Classifier in Cascade: 
+#13: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (56, 43)
+Best_Classfier.theta: -0.0636513914326911
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5527122515576641
+
+Best Classifier in Cascade: 
+#14: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (6, 8)
+Best_Classfier.theta: -0.001608010606749076
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.6031505264010715
+
+Best Classifier in Cascade: 
+#15: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (40, 40)
+Best_Classfier.theta: 0.7575463312895843
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5980394590528479
+
+Best Classifier in Cascade: 
+#16: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (53, 77)
+Best_Classfier.theta: -0.038479954321569594
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5717033283569545
+
+Best Classifier in Cascade: 
+#17: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 30)
+Best_Classfier.theta: 0.1470298105832251
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5718994075586704
+
+Best Classifier in Cascade: 
+#18: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (52, 38)
+Best_Classfier.theta: -0.01956070223697411
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5568115103109198
+
+Best Classifier in Cascade: 
+#19: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (74, 6)
+Best_Classfier.theta: -0.27675282935700285
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.546396738563298
+
+Best Classifier in Cascade: 
+#20: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (33, 43)
+Best_Classfier.theta: 1.2847473347054772
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5078031297260794
+
+Best Classifier in Cascade: 
+#21: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (33, 1)
+Best_Classfier.theta: 0.8037601576997907
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5066456013672985
+
+Best Classifier in Cascade: 
+#22: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (44, 44)
+Best_Classfier.theta: -0.18334853847229643
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5219179329948249
+
+Best Classifier in Cascade: 
+#23: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (56, 30)
+Best_Classfier.theta: -1.1043245577469512
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.48956567699405545
+
+Best Classifier in Cascade: 
+#24: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 0)
+Best_Classfier.theta: 0.000619701734179214
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4902628354939374
+
+Best Classifier in Cascade: 
+#25: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (38, 30)
+Best_Classfier.theta: -3.818167663511741
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5139846114379825
+
+Best Classifier in Cascade: 
+#26: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (51, 41)
+Best_Classfier.theta: -0.2652401584307373
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.538030939097576
+
+Best Classifier in Cascade: 
+#27: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (69, 39)
+Best_Classfier.theta: -1.4749109724866065
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5098473389844074
+
+Best Classifier in Cascade: 
+#28: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (44, 5)
+Best_Classfier.theta: -0.03933322644434359
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.48194915870182437
+
+Best Classifier in Cascade: 
+#29: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (59, 27)
+Best_Classfier.theta: -1.8114931986098637
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4678439181372895
+
+Best Classifier in Cascade: 
+#30: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (32, 73)
+Best_Classfier.theta: 0.0009030822784425466
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5145387696101088
+
+Best Classifier in Cascade: 
+#31: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (43, 43)
+Best_Classfier.theta: -0.36261148818935557
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4718968080581428
+
+Best Classifier in Cascade: 
+#32: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (30, 53)
+Best_Classfier.theta: 3.242428873921452
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4890370150585206
+
+Best Classifier in Cascade: 
+#33: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 30)
+Best_Classfier.theta: -0.0010156687305922524
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.46488978290971017
+
+Best Classifier in Cascade: 
+#34: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (41, 27)
+Best_Classfier.theta: -0.109386708526195
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5033273712433276
+
+Best Classifier in Cascade: 
+#35: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (31, 39)
+Best_Classfier.theta: -1.5224453640968623
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4571445992985727
+
+Best Classifier in Cascade: 
+#36: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (47, 5)
+Best_Classfier.theta: 0.0013810794033519776
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4749420416379771
+
+Best Classifier in Cascade: 
+#37: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 8)
+Best_Classfier.theta: -0.0004019387053992411
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4571065922287446
+
+Best Classifier in Cascade: 
+#38: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (61, 41)
+Best_Classfier.theta: -0.01543607821097993
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.44372137460819866
+
+Best Classifier in Cascade: 
+#39: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (6, 60)
+Best_Classfier.theta: -0.23116744926985222
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.44792408482287077
+
+Best Classifier in Cascade: 
+#40: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (56, 38)
+Best_Classfier.theta: -0.06602506505936714
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4732659342119434
+
+Best Classifier in Cascade: 
+#41: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (67, 70)
+Best_Classfier.theta: 0.25014581879490483
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.47240132121725686
+
+Best Classifier in Cascade: 
+#42: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 22)
+Best_Classfier.theta: -4.627018920013784
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.44590438687420025
+
+Best Classifier in Cascade: 
+#43: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (5, 35)
+Best_Classfier.theta: 7.250873336839851
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.44175544733800837
+
+Best Classifier in Cascade: 
+#44: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (19, 17)
+Best_Classfier.theta: -1.9528149987622694
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.48666816816429914
+
+Best Classifier in Cascade: 
+#45: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (73, 32)
+Best_Classfier.theta: -0.0031032770408586444
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.46548886846752696
+
+Best Classifier in Cascade: 
+#46: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (59, 41)
+Best_Classfier.theta: -0.022733331127178985
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.45892053377838915
+
+Best Classifier in Cascade: 
+#47: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 1)
+Best_Classfier.theta: 0.00016870233797891554
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.46090641496484847
+
+Best Classifier in Cascade: 
+#48: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (40, 46)
+Best_Classfier.theta: -0.11737737659833135
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4846645658949011
+
+Best Classifier in Cascade: 
+#49: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (35, 43)
+Best_Classfier.theta: 1.463406600570184
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.48431111073373706
+
+Best Classifier in Cascade: 
+#50: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 31)
+Best_Classfier.theta: -2.9919920775029096
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.45547328162635853
+
+Best Classifier in Cascade: 
+#51: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (1, 62)
+Best_Classfier.theta: -0.000863224681694479
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4646373434230746
+
+Best Classifier in Cascade: 
+#52: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (47, 31)
+Best_Classfier.theta: 0.4366383019730352
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.44689966651980667
+
+Best Classifier in Cascade: 
+#53: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 48)
+Best_Classfier.theta: 0.14903893377836783
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4913688295807618
+
+Best Classifier in Cascade: 
+#54: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (4, 48)
+Best_Classfier.theta: 0.012708945334255557
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4975430124557645
+
+Best Classifier in Cascade: 
+#55: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (45, 48)
+Best_Classfier.theta: -0.02044146157816697
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4519779126135423
+
+Best Classifier in Cascade: 
+#56: 
+Best_Classfier.haar.type: 4
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (3, 2)
+Best_Classfier.haar.shape: (3, 2)
+Best_Classfier.haar.start: (20, 47)
+Best_Classfier.theta: 0.770161869499394
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4364060503995262
+
+Best Classifier in Cascade: 
+#57: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (26, 21)
+Best_Classfier.theta: -1.6720065733695568
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.42455098260692964
+
+Best Classifier in Cascade: 
+#58: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (55, 71)
+Best_Classfier.theta: -0.14601468171438095
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.41636271729488317
+
+Best Classifier in Cascade: 
+#59: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (67, 2)
+Best_Classfier.theta: 0.02183150239930426
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4273121689122521
+
+Best Classifier in Cascade: 
+#60: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 35)
+Best_Classfier.theta: -0.9206542206438493
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4130836895597835
+
+Best Classifier in Cascade: 
+#61: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (49, 44)
+Best_Classfier.theta: 0.23590617616202358
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.41954115646583345
+
+Best Classifier in Cascade: 
+#62: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (4, 8)
+Best_Classfier.theta: 0.0015582781024078088
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.43433645604356264
+
+Best Classifier in Cascade: 
+#63: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (38, 41)
+Best_Classfier.theta: -4.501628510583503
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.42213856768405805
+
+Best Classifier in Cascade: 
+#64: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (28, 35)
+Best_Classfier.theta: 5.055164208254989
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4586814639036577
+
+Best Classifier in Cascade: 
+#65: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (57, 36)
+Best_Classfier.theta: -0.27527960534913787
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.46299934583464003
+
+Best Classifier in Cascade: 
+#66: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 49)
+Best_Classfier.theta: -0.0004986477410474176
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4295118925001848
+
+Best Classifier in Cascade: 
+#67: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (74, 39)
+Best_Classfier.theta: -0.006548698056608526
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4190621040748723
+
+Best Classifier in Cascade: 
+#68: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (50, 64)
+Best_Classfier.theta: 0.009858343772609513
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4385001308023394
+
+Best Classifier in Cascade: 
+#69: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (56, 36)
+Best_Classfier.theta: -0.06382056501296111
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.44050628781327894
+
+Best Classifier in Cascade: 
+#70: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (28, 28)
+Best_Classfier.theta: -2.0616728304145524
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.47878275733140424
+
+Best Classifier in Cascade: 
+#71: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (34, 8)
+Best_Classfier.theta: 0.0006042464271975699
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4158213990181647
+
+Best Classifier in Cascade: 
+#72: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (36, 31)
+Best_Classfier.theta: 0.09710646303562943
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4047085915965505
+
+Best Classifier in Cascade: 
+#73: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (42, 42)
+Best_Classfier.theta: -0.6372694959609033
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.42656702305979943
+
+Best Classifier in Cascade: 
+#74: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (1, 47)
+Best_Classfier.theta: -0.0005322134001615073
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4343517003622095
+
+Best Classifier in Cascade: 
+#75: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (74, 32)
+Best_Classfier.theta: -0.00758492054364147
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4226392747410594
+
+Best Classifier in Cascade: 
+#76: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (56, 42)
+Best_Classfier.theta: -0.06649620327487134
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.41476187332709724
+
+Best Classifier in Cascade: 
+#77: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (74, 12)
+Best_Classfier.theta: -0.29706495683050504
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.42197206738337445
+
+Best Classifier in Cascade: 
+#78: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (66, 5)
+Best_Classfier.theta: 0.8103127946166532
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4721401841188866
+
+Best Classifier in Cascade: 
+#79: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (52, 36)
+Best_Classfier.theta: -0.015635821639356916
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.441162810147988
+
+Best Classifier in Cascade: 
+#80: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (61, 34)
+Best_Classfier.theta: -0.050412157275716685
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4241106869370023
+
+Best Classifier in Cascade: 
+#81: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (40, 46)
+Best_Classfier.theta: -2.1600241462958865
+Best_Classfier.sign: -1
+Best_Classfier.weight: 2.159308113164533
+
+Best Classifier in Cascade: 
+#82: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (32, 29)
+Best_Classfier.theta: 4.574697586098466
+Best_Classfier.sign: 1
+Best_Classfier.weight: 1.2961253568456041
+
+Best Classifier in Cascade: 
+#83: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (35, 31)
+Best_Classfier.theta: -3.218269459752864
+Best_Classfier.sign: -1
+Best_Classfier.weight: 1.0677892574212695
+
+Best Classifier in Cascade: 
+#84: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (41, 30)
+Best_Classfier.theta: -0.15127639567506637
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.8651244114574497
+
+Best Classifier in Cascade: 
+#85: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (1, 47)
+Best_Classfier.theta: 0.016147549085525865
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.854091194138457
+
+Best Classifier in Cascade: 
+#86: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 31)
+Best_Classfier.theta: -3.0082963592365313
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.748168349246223
+
+Best Classifier in Cascade: 
+#87: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (21, 32)
+Best_Classfier.theta: -9.62079641092151
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.7931113820840258
+
+Best Classifier in Cascade: 
+#88: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (54, 37)
+Best_Classfier.theta: -0.9401528642095706
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.7614599241669704
+
+Best Classifier in Cascade: 
+#89: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (4, 5)
+Best_Classfier.theta: 0.0011727623529249641
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.7172965380466175
+
+Best Classifier in Cascade: 
+#90: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (43, 46)
+Best_Classfier.theta: -0.6120247756238318
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.6383668193303866
+
+Best Classifier in Cascade: 
+#91: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 29)
+Best_Classfier.theta: 0.13588430158696502
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.6403246942331753
+
+Best Classifier in Cascade: 
+#92: 
+Best_Classfier.haar.type: 5
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (50, 69)
+Best_Classfier.theta: 0.07131329750450449
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.6877652100705233
+
+Best Classifier in Cascade: 
+#93: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (64, 37)
+Best_Classfier.theta: 1.0161043169442852
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.6124262381920125
+
+Best Classifier in Cascade: 
+#94: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (1, 26)
+Best_Classfier.theta: -6.618597789323535e-05
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.6319184867424493
+
+Best Classifier in Cascade: 
+#95: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (56, 43)
+Best_Classfier.theta: -0.06710213332787324
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5774708421770821
+
+Best Classifier in Cascade: 
+#96: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (1, 69)
+Best_Classfier.theta: -0.0003778210603089898
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5474274502987904
+
+Best Classifier in Cascade: 
+#97: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (40, 46)
+Best_Classfier.theta: -0.11822988309060405
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.566237352393153
+
+Best Classifier in Cascade: 
+#98: 
+Best_Classfier.haar.type: 4
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (3, 2)
+Best_Classfier.haar.shape: (3, 2)
+Best_Classfier.haar.start: (38, 47)
+Best_Classfier.theta: 0.7402059550510692
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5135227667345116
+
+Best Classifier in Cascade: 
+#99: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (32, 64)
+Best_Classfier.theta: 0.6204138205263517
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.5323737237344307
+
+Best Classifier in Cascade: 
+#100: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (24, 23)
+Best_Classfier.theta: -2.7722570399532946
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.579537871702709
+
+Best Classifier in Cascade: 
+#101: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 40)
+Best_Classfier.theta: 0.9608781754267272
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5204277798229573
+
+Best Classifier in Cascade: 
+#102: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (57, 78)
+Best_Classfier.theta: -0.03158510021291787
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5680111032482291
+
+Best Classifier in Cascade: 
+#103: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (5, 27)
+Best_Classfier.theta: 6.624926483706075
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.467990293591376
+
+Best Classifier in Cascade: 
+#104: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 19)
+Best_Classfier.theta: -8.947759039539224e-05
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5147677797134502
+
+Best Classifier in Cascade: 
+#105: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (36, 45)
+Best_Classfier.theta: 0.10171450241065337
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.49201531087565525
+
+Best Classifier in Cascade: 
+#106: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (3, 62)
+Best_Classfier.theta: -0.000760914322973118
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.5064110883750748
+
+Best Classifier in Cascade: 
+#107: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (40, 25)
+Best_Classfier.theta: -4.398638137742894
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.49789238319739765
+
+Best Classifier in Cascade: 
+#108: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (51, 4)
+Best_Classfier.theta: 0.013433966308167634
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.472672443940615
+
+Best Classifier in Cascade: 
+#109: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (56, 35)
+Best_Classfier.theta: -0.06532810652335821
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.47814564985618685
+
+Best Classifier in Cascade: 
+#110: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 5
+Best_Classfier.haar.feature.shape: (10, 10)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (48, 31)
+Best_Classfier.theta: -0.7068966696870813
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.47039878213598163
+
+Best Classifier in Cascade: 
+#111: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (63, 73)
+Best_Classfier.theta: -0.06622504123219017
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.4612806723231625
+
+Best Classifier in Cascade: 
+#112: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 3
+Best_Classfier.haar.feature.shape: (6, 6)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (56, 35)
+Best_Classfier.theta: -0.2287137754269793
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.45044269969866724
+
+Best Classifier in Cascade: 
+#113: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (24, 51)
+Best_Classfier.theta: 3.2776135889327382
+Best_Classfier.sign: 1
+Best_Classfier.weight: 0.44180398857584674
+
+Best Classifier in Cascade: 
+#114: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (0, 36)
+Best_Classfier.theta: 0.0007529003202451515
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.475448577092997
+
+Best Classifier in Cascade: 
+#115: 
+Best_Classfier.haar.type: 2
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (40, 32)
+Best_Classfier.theta: -0.11992679424076948
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4662784869426594
+
+Best Classifier in Cascade: 
+#116: 
+Best_Classfier.haar.type: 6
+Best_Classfier.haar.size: 1
+Best_Classfier.haar.feature.shape: (2, 2)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (39, 73)
+Best_Classfier.theta: 0.0010139873347099443
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4687475052960069
+
+Best Classifier in Cascade: 
+#117: 
+Best_Classfier.haar.type: 1
+Best_Classfier.haar.size: 7
+Best_Classfier.haar.feature.shape: (14, 14)
+Best_Classfier.haar.shape: (2, 2)
+Best_Classfier.haar.start: (64, 26)
+Best_Classfier.theta: -1.1977453992598812
+Best_Classfier.sign: -1
+Best_Classfier.weight: 0.4546103120922555
+

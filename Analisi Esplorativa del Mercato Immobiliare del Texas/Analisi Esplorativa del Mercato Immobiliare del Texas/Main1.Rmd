@@ -1,0 +1,799 @@
+---
+title: "Main1"
+output:
+  pdf_document: default
+  html_document: default
+date: "2024-01-19"
+---
+
+
+                    Analisi Esplorativa del Mercato Immobiliare del Texas
+
+                                        
+                                         Parte 1
+
+
+installazione pacchetti:
+```{r, warning=FALSE, message=FALSE, note=FALSE}
+#install.packages("moments")
+#install.packages("psych")
+#install.packages("dplyr")
+source("Utils.R")
+#tinytex::install_tinytex()
+```
+
+
+1)	Importa il dataset “Real Estate Texas.csv.
+
+
+```{r}
+RealEstateTexax_Dataframe = read.csv("Real Estate Texas.csv")
+```
+
+per riferirmi alle colonne del dataframe senza usare la notazione: RealEstateTexax_Dataframe$nome_colonna
+
+```{r}
+attach(RealEstateTexax_Dataframe)
+```
+
+
+2)	Indica il tipo di variabili contenute nel dataset. 
+
+```{r}
+class(city) #qualitativa nominale
+
+class(year) #qualitativa ordinale 
+
+class(month) #qualitativa ordinale
+
+class(sales) #quantitativa discreta, scala rapporti
+
+class(volume) #quantitativa continua, scala rapporti
+
+class(median_price) #quantitativa continua, scala rapporti
+
+class(listings) #quantitativa discreta, scala rapporti
+
+class(months_inventory) #quantitavia discreta, scala rapporti
+```
+
+3)	Calcola Indici di posizione, variabilità e forma per tutte le variabili per le quali ha senso farlo, per le altre crea una distribuzione di frequenza.
+
+
+INDICI DI POSIZIONE:
+
+Per city year e month essendo variabili qualitative ha senso calcolare solo la moda.
+
+                                    Variabile city
+
+```{r}
+table(city)
+max(table(city)) 
+```
+
+distribuzione equimodale. Valore della fequenza: 60.
+
+
+                                     Variabile year    
+
+```{r}
+table(year)
+max(table(year)) 
+```
+
+distribuzione equimodale. Valore della fequenza: 48.
+
+
+                                     Variabile month
+
+```{r}
+table(month)
+max(table(month)) 
+```
+
+distribuzione equimodale. Valore della fequenza:20.
+
+
+                                     Variabile sales
+
+divisione in classi di sales:
+
+```{r}
+sales_div_classi = cut(sales, seq(min(sales), max(sales), (max(sales)-min(sales))/10 ))
+```
+
+distribuzione in frequenza di sales:
+
+```{r}
+ni = table(sales_div_classi)
+fi = table(sales_div_classi) / length(sales)
+Ni = cumsum(table(sales_div_classi))
+Fi = cumsum(table(sales_div_classi)) / length(sales)
+sales_distr_freq = as.data.frame( cbind( ni, fi, Ni, Fi))
+```
+
+
+calcolo della moda, vengono presentati due metodi:
+
+
+```{r}
+table(sales_div_classi)
+max(table(sales_div_classi))  #1° metodo  
+
+max(sales_distr_freq["ni"])  #2° metodo
+```
+
+moda: classe (148,182], con valore della frequenza uguale a 47.
+
+calcolo della mediana:
+
+```{r}
+median(sort(sales))   #1° metodo 
+
+x = sales_distr_freq["Fi"][[1]]     #2° metodo
+index = which(x >= 0.50)[1]        
+rownames(sales_distr_freq)[index]
+```
+
+mediana: 175.5.
+Il secondo metodo ritorna la classe "(148,182]" ovvero che la mediana è contenuta all'interno del range di tale classe. 
+Il risultato è coerente con il valore 175.5.
+
+
+quantili:
+
+
+```{r}
+quantile(sort(sales))[c(1, 5)] 
+```
+
+minimo: 79, massimo: 423.
+
+
+media: 
+
+ARITMETICA 
+
+```{r}
+mean(sales)
+```
+
+media aritmetica: 192.2917.
+
+
+PONDERATA
+
+```{r}
+valori = seq(min(sales), max(sales), (max(sales)-min(sales))/10 ) + (((max(sales)-min(sales))/10) /2)
+valori = valori[-11]
+pesi = sales_distr_freq["ni"][[1]] 
+weighted.mean(valori, pesi)
+```
+
+media ponderata:  193.763.
+NOTA: anche con i dati sintetizzati si ha avuto un'ottima precisione.
+
+
+                                      Variabile volume
+
+divisione in classi di volume:
+
+```{r}
+volume_div_classi = cut(volume, seq(min(volume), max(volume), (max(volume)-min(volume))/10 ))
+```
+
+
+distribuzione in frequenza di volume:
+
+```{r}
+ni = table(volume_div_classi)
+fi = table(volume_div_classi) / length(volume)
+Ni = cumsum(table(volume_div_classi))
+Fi = cumsum(table(volume_div_classi)) / length(volume)
+
+volume_distr_freq = as.data.frame( cbind( ni, fi, Ni, Fi))
+```
+
+calcolo della moda:
+
+```{r}
+table(volume_div_classi)
+max(table(volume_div_classi))  #1° metodo  
+
+max(volume_distr_freq["ni"])  #2° metodo
+```
+
+
+moda: distribuzione bimodale con modalità: (8.17,15.7] e (15.7,23.2]. Valore Frequenza: 46
+
+
+calcolo della mediana:
+
+```{r}
+median(sort(volume))   #1° metodo 
+
+x = volume_distr_freq["Fi"][[1]]     #2° metodo
+index = which(x >= 0.50)[1]          
+rownames(volume_distr_freq)[index]
+```
+
+mediana: 27.0625
+Il secondo metodo ritorna la classe "(23.2,30.8]" ovvero che la mediana è contenuta all'interno del range di tale classe. 
+Il risultato è coerente con il valore 27.0625.
+
+
+quantili:
+
+```{r}
+quantile(sort(volume))[c(1, 5)] 
+```
+
+minimo: 8.166, massimo: 83.547
+ 
+
+media:
+
+ARITMETICA
+
+```{r}
+mean(volume)
+```
+
+media aritmetica: 31.00519
+
+PONDERATA
+
+```{r}
+valori = seq(min(volume), max(volume), (max(volume)-min(volume))/10 ) + (((max(volume)-min(volume))/10) /2)
+valori = valori[-11]
+pesi = volume_distr_freq["ni"][[1]] 
+weighted.mean(valori, pesi)
+```
+
+media ponderata: 31.20609.
+
+
+
+                                      Variabile median_price
+
+divisione in classi di median_price:
+
+```{r}
+median_price_div_classi = cut(median_price, seq(min(median_price), max(median_price), (max(median_price)-min(median_price))/10 ))
+```
+
+distribuzione in frequenza di median_price:
+
+```{r}
+
+ni = table(median_price_div_classi)
+fi = table(median_price_div_classi) / length(median_price)
+Ni = cumsum(table(median_price_div_classi))
+Fi = cumsum(table(median_price_div_classi)) / length(median_price)
+
+median_price_distr_freq = as.data.frame( cbind( ni, fi, Ni, Fi))
+
+```
+
+
+calcolo della moda: 
+
+```{r}
+table(median_price_div_classi)
+max(table(median_price_div_classi))  #1° metodo  
+
+max(median_price_distr_freq["ni"])  #2° metodo
+```
+
+moda: classe (1.27e+05,1.38e+05], con valore della frequenza uguale a 48.
+
+
+calcolo della mediana:
+
+```{r}
+median(sort(median_price))   #1° metodo 
+
+x = median_price_distr_freq["Fi"][[1]]     #2° metodo
+index = which(x >= 0.50)[1]                
+rownames(median_price_distr_freq)[index]
+```
+
+mediana: 134500.
+secondo metodo:  classe "(1.27e+05,1.38e+05]".
+
+quantili:
+
+```{r}
+quantile(sort(median_price))[c(1, 5)] 
+```
+
+minimo: 73800, massimo: 180000 
+
+
+media:
+
+ARITMETICA
+
+```{r}
+mean(median_price)
+```
+
+media aritmetica: 132665.4.
+
+PONDERATA 
+
+```{r}
+valori = seq(min(median_price), max(median_price), (max(median_price)-min(median_price))/10 ) + (((max(median_price)-min(median_price))/10) /2)
+valori = valori[-11]
+pesi = median_price_distr_freq["ni"][[1]] 
+media_ponderata = weighted.mean(valori, pesi)
+
+```
+
+media ponderata: 132965.4.
+
+Nota: in questo caso si può vedere la differenza di risultato dovuta ai due metodi. Nel secondo a causa della sintetizzazione dei dati si ha un valore approssimato.
+
+
+
+                                      Variabile listings
+
+divisione in classi di listings:
+
+```{r}
+listings_div_classi = cut(listings, seq(min(listings), max(listings), (max(listings)-min(listings))/10 ))
+```
+
+distribuzione in frequenza di listings:
+
+```{r}
+ni = table(listings_div_classi)
+fi = table(listings_div_classi) / length(listings)
+Ni = cumsum(table(listings_div_classi))
+Fi = cumsum(table(listings_div_classi)) / length(listings)
+
+listings_distr_freq = as.data.frame( cbind( ni, fi, Ni, Fi))
+```
+
+
+calcolo della moda:
+
+```{r}
+table(listings_div_classi)
+max(table(listings_div_classi))  #1° metodo  
+
+max(listings_distr_freq["ni"])  #2° metodo
+
+```
+
+
+moda:  classe (1.51e+03,1.76e+03], con valore della frequenza uguale a 67.
+
+
+calcolo della mediana
+
+```{r}
+median(sort(listings))   #1° metodo 
+
+x = listings_distr_freq["Fi"][[1]]     #2° metodo
+index = which(x >= 0.50)[1]         
+rownames(listings_distr_freq)[index]
+```
+
+mediana: 1618.5.
+secondo metodo: classe "(1.51e+03,1.76e+03]"
+
+quantili:
+
+```{r}
+quantile(sort(listings))[c(1, 5)] 
+```
+
+minimo: 743, massimo: 3296
+
+
+
+media 
+
+ARITMETICA
+
+```{r}
+mean(listings)
+```
+
+media aritmetica: 1738.021.
+
+PONDERATA
+
+```{r}
+valori = seq(min(listings), max(listings), (max(listings)-min(listings))/10 ) + (((max(listings)-min(listings))/10) /2)
+valori = valori[-11]
+pesi = listings_distr_freq["ni"][[1]] 
+media_ponderata = weighted.mean(valori, pesi)
+```
+
+media ponderata: 1739.097.
+
+
+
+                                  Variabile month_inventory  
+
+
+divisione in classi di months_inventory:
+
+```{r}
+months_inventory_div_classi = cut(months_inventory, seq(min(months_inventory), max(months_inventory), (max(months_inventory)-min(months_inventory))/10 ))
+```
+
+distribuzione in frequenza di months_inventory:
+
+```{r}
+ni = table(months_inventory_div_classi)
+fi = table(months_inventory_div_classi) / length(months_inventory)
+Ni = cumsum(table(months_inventory_div_classi))
+Fi = cumsum(table(months_inventory_div_classi)) / length(months_inventory)
+
+months_inventory_distr_freq = as.data.frame( cbind( ni, fi, Ni, Fi))
+
+```
+
+calcolo della moda:
+
+```{r}
+table(months_inventory_div_classi)
+max(table(months_inventory_div_classi))  #1° metodo  
+
+max(months_inventory_distr_freq["ni"])  #2° metodo
+```
+
+moda: distribuzione bimodale delle classi (6.85,8] e (8,9.15], con valore della frequenza uguale a 54.
+
+calcolo della mediana:
+
+```{r}
+median(sort(months_inventory))   #1° metodo 
+
+x = months_inventory_distr_freq["Fi"][[1]]     #2° metodo
+index = which(x >= 0.50)[1]                    
+rownames(months_inventory_distr_freq)[index]
+```
+
+mediana: 8.95
+secondo metodo: classe "(8,9.15]".
+
+quantili:
+
+```{r}
+quantile(sort(months_inventory))[c(1, 5)] 
+```
+
+minimo: 3.4, massimo: 14.9 
+
+
+media:
+
+ARITMETICA
+
+```{r}
+mean(months_inventory)
+
+```
+
+media aritmetica: 9.1925.
+
+PONDERATA
+
+```{r}
+valori = seq(min(months_inventory), max(months_inventory), (max(months_inventory)-min(months_inventory))/10 ) + (((max(months_inventory)-min(months_inventory))/10) /2)
+valori = valori[-11]
+pesi = months_inventory_distr_freq["ni"][[1]] 
+media_ponderata = weighted.mean(valori, pesi)
+```
+
+media ponderata: 9.200523.
+
+
+
+INDICI DI VARIABILITA'
+
+
+Per le variabili qualitative è stato calcolato solo l’indice di Gini con la  funzione “indice_gini” che si trova nel file Utils.R.
+Per le altre variabili oltre all’indice di Gini sono stati calcolati anche tutti gli altri indici di variabilità tramite la funzione “indici_di_variabilità”, sempre del file Utils.R.
+Come la moda, anche per il calcolo dell’indice di Gini è stata prima calcolata la distribuzione in frequenze quando la variabile è quantitativa.
+
+
+                                          Variabile city
+
+
+```{r}
+gini_city = indice_gini(city, tipo_variabile="qualitativa") 
+gini_city
+```
+
+gini: 1.
+Le classi hanno il massimo livello di omogeneità, infatti la distribuzione è equimodale.
+
+
+                                          Variabile year
+
+```{r}
+gini_year = indice_gini(year, tipo_variabile="qualitativa")  
+gini_year
+```
+
+gini: 1.
+Le classi hanno il massimo livello di omogeneità, infatti la distribuzione è equimodale.
+
+
+                                          Variabile month
+
+```{r}
+gini_month = indice_gini(month, tipo_variabile="qualitativa")  
+gini_month
+```
+
+gini: 1.
+Le classi hanno il massimo livello di omogeneità, infatti la distribuzione è equimodale.
+
+
+                                          Variabile sales
+
+```{r}
+indici_di_variabilità("sales", sales) 
+```
+
+
+                                          Variabile volume
+
+```{r}
+indici_di_variabilità("volume", volume) 
+```
+
+
+                                        Variabile median_price
+
+```{r}
+indici_di_variabilità("median_price", median_price) 
+```
+
+
+                                        Variabile listings
+                                          
+```{r}
+indici_di_variabilità("listings", listings) 
+```
+
+
+                                      Variabile month_inventory
+
+```{r}
+indici_di_variabilità("months_inventory", months_inventory)
+```
+
+
+
+
+INDICI DI FORMA
+
+Gli indici di forma non sono stati calcolati per le variabili qualitative.
+Per le restanti è stata usata la funzione “indici_di_forma” che consente di calcolare sia l’asimmetria che la curtosi di una distribuzione. Anch’essa è contenuta nel file Utils.R.
+
+
+```{r}
+library(moments)
+```
+
+
+                                        Variabile sales
+
+```{r}
+indici_di_forma("sales", sales) 
+```
+
+
+prova correttezza funzioni "indice asimmetria" e "indice curtosi" del file Utils.R tramite le funzioni del pacchetto "moments":
+
+```{r}
+skewness(sales)  
+kurtosis(sales) - 3
+```
+
+ok piccola differenza dovuta probabilmente ad arrotondamenti.
+
+
+                                         Variabile volume
+
+```{r}
+indici_di_forma("volume", volume) 
+```
+
+
+                                      Variabile median_price
+
+```{r}
+indici_di_forma("median_price", median_price) 
+```
+
+
+                                        Variabile listings
+
+```{r}
+indici_di_forma("listings", listings) 
+```
+
+
+                                  Variabile month_inventory
+
+```{r}
+indici_di_forma("months_inventory", months_inventory) 
+```
+
+
+
+4) 	Qual è la variabile con variabilità più elevata? Come ci sei arrivato? E quale quella più asimmetrica?
+
+
+La variabile con variabilità più elevata è il volume, conclusione fatta osservando il coefficiente di variazione delle diverse variabili. Ho utilizzato questo indice perchè permette di confrontare variabili provenienti da distribuzioni diverse.
+La variabile più asimmetrica è ancora il volume. Per giungere a questa conclusione ho confrontato il valore assoluto dei vari indici di asimmetria delle variabili e prendendo quello più grande, ricordando che un indice di asimmetria pari a zero corrisponde a una simmetria perfetta, come quella della distribuzione normale.
+
+
+
+5)	Dividi una delle variabili quantitative in classi, scegli tu quale e come, costruisci la distribuzione di frequenze, il grafico a barre corrispondente e infine calcola l’indice di Gini. 
+
+distribuzione in frequenze:
+
+```{r}
+distribuzione_frequenze_volume = get_distribuzione_frequenze(volume)
+```
+
+grafico a barre:
+
+```{r}
+
+barplot(distribuzione_frequenze_volume$ni,
+        xlab = "volume, in milioni di dollari",
+        ylab = "Frequenze assolute",
+        names.arg = rownames(distribuzione_frequenze_volume),
+        # cex.axis = 0.8,   -> riduzione font per labelasse y
+        # cex.lab = 0.8,    #-> riduzione font per per label asse x
+        cex.names = 0.7,  # -> riduzione font per per descrizione classi
+        xlim = c(0,12),
+        ylim = c(0,50),
+        las=2,
+        col="blue")
+```
+
+Nota: per una visione corretta del grafico 
+
+Per l’indice di Gini vedere il punto 3.
+
+
+
+
+6)	Indovina l’indice di gini per la variabile city.
+
+
+```{r}
+gini_city = indice_gini(city, tipo_variabile="qualitativa") 
+gini_city
+```
+
+l’indice di Gini è uguale a 1, infatti le classi hanno il massimo livello di omogeneità ovvero la distribuzione è equimodale.
+
+
+
+7)	Qual è la probabilità che presa una riga a caso di questo dataset essa riporti la città “Beaumont”? E la probabilità che riporti il mese di Luglio? E la probabilità che riporti il mese di dicembre 2012?
+
+Essendo i dati noti si può usare l'approccio classico ovvero numero di casi favorevoli diviso il totale dei casi.
+
+
+```{r}
+prob_beaumont = table(city)["Beaumont"] / length(city)
+prob_beaumont 
+```
+
+La probabilità che esca la città di Beaumont è 0.25, infatti ho 4 valori possibili equiprobabili.
+
+
+```{r}
+prob_luglio = table(month)[7] / length(month)
+prob_luglio 
+```
+
+La probabilità che esca il mese di luglio è 0.8333, infatti ho 12 valori possibili equiprobabili.
+
+
+```{r}
+prob_dic_2012 = sum( RealEstateTexax_Dataframe[["month"]] == "12" & RealEstateTexax_Dataframe[["year"]] == 2012 ) / nrow(RealEstateTexax_Dataframe)
+prob_dic_2012  # 0.01666667
+```
+
+La probabilità che esca il mese di dicembre 2012 è 0.0166.
+
+
+8)	Esiste una colonna col prezzo mediano, creane una che indica invece il prezzo medio, utilizzando le altre variabili che hai a disposizione
+
+```{r}
+RealEstateTexax_Dataframe["mean_price"] = volume/sales*1000000
+```
+
+
+9)	Prova a creare un’altra colonna che dia un’idea di “efficacia” degli annunci di vendita. Riesci a fare qualche considerazione?
+
+
+```{r}
+RealEstateTexax_Dataframe["conversion_coefficient"] = sales/listings*100
+
+coefficiente_conversione = RealEstateTexax_Dataframe$conversion_coefficient
+
+mean_coefficiente_conversione = mean(coefficiente_conversione)
+
+
+std_coefficiente_conversione = sd(coefficiente_conversione)
+```
+
+
+L’indicatore creato è stato chiamato “Coefficiente di Conversione” e indica la percentuale di annunci che si sono convertiti in vendite.
+
+con media:
+
+```{r}
+mean_coefficiente_conversione
+```
+
+e deviazione standard:
+
+```{r}
+std_coefficiente_conversione
+```
+
+Inoltre sono state fatte le seguenti osservazioni:
+
+1 - Si è riscontrato che la maggior efficacia degli annunci la si ha nel periodo estivo:
+
+```{r, warning=FALSE, message=FALSE, note=FALSE}
+library(dplyr)
+
+dati_raggruppati1 <- RealEstateTexax_Dataframe[ c("month", "conversion_coefficient")] %>% 
+  group_by(month) %>%
+  summarise(media_conversione1 = mean(conversion_coefficient, na.rm = TRUE))
+```
+
+2 - Si è riscontrato un trend positivo nell'efficacia degli annunci in base al tempo:
+
+```{r}
+dati_raggruppati2 <- RealEstateTexax_Dataframe[ c("year", "conversion_coefficient")] %>% 
+  group_by(year) %>%
+  summarise(media_conversione2 = mean(conversion_coefficient, na.rm = TRUE))
+```
+
+
+ulteriori considerazioni:
+
+```{r}
+model <- lm(sales ~ coefficiente_conversione, data = RealEstateTexax_Dataframe)
+summary(model)
+```
+
+1. -> il p-value proposto permette di non confutare il legame che sussiste tra le due variabili, quindi effettivamente pubblicare annunci ha un effetto sulle vendite.
+
+2. -> d altra parte considerando Multiple R-squared si può notare che solo il 17% circa della variabilità dei dati poò essere spiegata dal modello, di consegunza gli annunci hanno un'influenza relativamente bassa sulle vendite.
+
+
+
+10)	Prova a creare dei summary.
+
+Oltre a quelli fatti nel punto 9:
+
+```{r}
+totale_venduto_città <- RealEstateTexax_Dataframe %>% 
+  group_by(city) %>%
+  summarise(media_fatturato = mean(volume, na.rm = TRUE))
+
+totale_venduto_città
+```
+
+La città con maggiore fatturato è Tyler.
+
+
+
