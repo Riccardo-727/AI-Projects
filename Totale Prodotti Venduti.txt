@@ -1,0 +1,27 @@
+{
+     "primo_prodotto": {
+          "quantity": 26,
+          "buy_price": 3.0,
+          "sell_price": 5.0
+     },
+     "secondo_prodotto": {
+          "quantity": 4,
+          "buy_price": 3.0,
+          "sell_price": 10.0
+     },
+     "terzo_prodotto": {
+          "quantity": 22,
+          "buy_price": 3.0,
+          "sell_price": 3.0
+     },
+     "quarto_prodotto": {
+          "quantity": 2,
+          "buy_price": 10.0,
+          "sell_price": 10.0
+     },
+     "quinto_prodotto": {
+          "quantity": 1,
+          "buy_price": 3.0,
+          "sell_price": 8.0
+     }
+}
